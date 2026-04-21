@@ -1,0 +1,59 @@
+name: avi-mov-to-mp4
+code: avi-mov-to-mp4
+version: 2.0.0
+category: upload
+description: AVI/MOV 비디오 파일을 MP4로 변환하여 업로드하는 플러그인
+actions:
+  upload:
+    entrypoint: plugin.upload.UploadAction
+    method: job
+    supported_data_type: video
+    ui_schema:
+    - $formkit: select
+      name: crf
+      label: 영상 품질 (CRF)
+      help: 낮을수록 고품질입니다. 기본값은 23입니다.
+      options:
+      - label: 최고 품질 (18)
+        value: '18'
+      - label: 고품질 (20)
+        value: '20'
+      - label: 기본 (23)
+        value: '23'
+      - label: 저용량 (28)
+        value: '28'
+      value: '23'
+      required: false
+    - $formkit: select
+      name: preset
+      label: 인코딩 속도
+      help: 느릴수록 압축 효율이 높습니다. 기본값은 medium입니다.
+      options:
+      - label: 빠름 (fast)
+        value: fast
+      - label: 보통 (medium)
+        value: medium
+      - label: 느림 (slow)
+        value: slow
+      value: medium
+      required: false
+    - $formkit: text
+      name: group_name
+      label: 묶음 이름
+      help: 데이터 유닛에 할당할 묶음 이름을 입력하세요.
+      required: false
+  download:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.DownloadAction
+    method: job
+  convert:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.ConvertAction
+    method: job
+  train:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.TrainAction
+    method: job
+  add_task_data:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.actions.add_task_data.action.AddTaskDataAction
+    method: job
+  export:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.actions.export.action.DefaultExportAction
+    method: job
