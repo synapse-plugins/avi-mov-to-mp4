@@ -1,8 +1,10 @@
 name: avi-mov-to-mp4
 code: avi-mov-to-mp4
-version: 2.0.0
+version: 2.1.0
 category: upload
 description: AVI/MOV 비디오 파일을 MP4로 변환하여 업로드하는 플러그인
+supported_data_types:
+  - video
 actions:
   upload:
     entrypoint: plugin.upload.UploadAction
