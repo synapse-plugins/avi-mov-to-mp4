@@ -1,2 +1,2 @@
-synapse-sdk==2026.1.24
+synapse-sdk[all]
 ffmpeg-python

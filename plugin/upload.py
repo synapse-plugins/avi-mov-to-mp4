@@ -30,7 +30,12 @@ class UploadAction(DefaultUploadAction[UploadParams]):
     def get_allowed_extensions(self) -> dict[str, list[str]] | None:
         """Restrict video files to AVI, MOV, and MP4 formats only."""
         return {
+            'image': ['.jpg', '.jpeg', '.png'],
             'video': ['.avi', '.mov', '.mp4'],
+            'audio': ['.mp3', '.wav'],
+            'text': ['.txt', '.html'],
+            'pcd': ['.pcd'],
+            'data': ['.bin', '.json', '.fbx', '.xml'],
         }
 
     def setup_steps(self, registry: StepRegistry[UploadContext]) -> None:
