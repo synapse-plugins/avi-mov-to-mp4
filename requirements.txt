@@ -1,2 +1,2 @@
-synapse-sdk[all]==2026.2.6
+synapse-sdk[all]==2026.2.8
 ffmpeg-python
